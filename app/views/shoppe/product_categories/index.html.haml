@@ -14,6 +14,13 @@
         %tr.empty
           %td= t('shoppe.product_category.no_categories')
       - else
-        - for cat in @product_categories
+        - for cat in @product_categories.select {|cat| !cat.parent_id }
           %tr
-            %td= link_to cat.name, [:edit, cat]
+            %th
+              = link_to cat.name, [:edit, cat]
+          - for subcat in cat.subcats
+            %tr
+              %td
+                = link_to subcat.name, [:edit, cat]
+
+

@@ -2,6 +2,7 @@ module Shoppe
   class ProductCategory < ActiveRecord::Base
 
     self.table_name = 'shoppe_product_categories'
+    require_dependency 'shoppe/category/subcategory'
 
     # Categories have an image attachment
     attachment :image
