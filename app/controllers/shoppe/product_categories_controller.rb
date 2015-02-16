@@ -10,6 +10,7 @@ module Shoppe
 
     def new
       @product_category = Shoppe::ProductCategory.new
+      @parent_categories = Shoppe::ProductCategory.root
     end
 
     def create
@@ -40,7 +41,7 @@ module Shoppe
     private
 
     def safe_params
-      params[:product_category].permit(:name, :permalink, :description, :image_file)
+      params[:product_category].permit(:name, :permalink, :description, :image_file, :parent_id)
     end
 
   end

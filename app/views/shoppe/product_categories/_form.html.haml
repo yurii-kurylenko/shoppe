@@ -11,7 +11,9 @@
     %dl
       %dt= f.label :description, t('shoppe.product_category.description')
       %dd= f.text_area :description, :class => 'text'
-
+    %dl
+      %dt= f.label "Родительская категория"
+      %dd= f.collection_select :parent_id, Shoppe::ProductCategory.root, :id, :name, {:prompt => false, :include_blank => true}, {:class => 'chosen'}
   = field_set_tag t('shoppe.product_category.attachments') do
     %dl
       %dt= f.label :image_file, t('shoppe.product_category.image')
